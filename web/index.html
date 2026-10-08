@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EventWeave — Digital Forensics Incident Reconstruction</title>
+  <meta name="description" content="Digital forensics incident reconstruction with evidence integrity, timeline correlation and chain-of-custody auditing." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">EW</span><div><strong>EventWeave</strong><small>digital forensics workspace</small></div></div>
+    <nav>
+      <span class="nav-label">CASE WORKSPACE</span>
+      <button class="nav-item active">01 <span>Case overview</span></button>
+      <button class="nav-item">02 <span>Evidence timeline</span></button>
+      <button class="nav-item">03 <span>Findings</span></button>
+      <button class="nav-item">04 <span>Entity graph</span></button>
+      <button class="nav-item">05 <span>Chain of custody</span></button>
+      <span class="nav-label">INTEGRITY</span>
+      <div class="integrity-pill"><span></span><div><b>SHA-256 evidence hashing</b><small>tamper-evident imports</small></div></div>
+      <div class="integrity-pill"><span></span><div><b>UTC-normalised timeline</b><small>cross-source correlation</small></div></div>
+    </nav>
+    <div class="sidebar-foot"><small>PERSONAL PROJECT · 2026<br/>MOHAMMED MOMINUR RAHMAN MIAH</small></div>
+  </aside>
+
+  <main>
+    <header class="topbar"><span>CASE / INCIDENT RECONSTRUCTION / OVERVIEW</span><div><i></i> LOCAL API CONNECTED <b>MM</b></div></header>
+
+    <section class="hero">
+      <div>
+        <span class="eyebrow">DIGITAL FORENSICS · EVIDENCE FIRST</span>
+        <h1>Reconstruct what happened.<br><em>Preserve how you know.</em></h1>
+        <p>EventWeave turns raw security evidence into a defensible timeline, correlates entities across sources, flags suspicious activity and records every investigation action in an auditable chain of custody.</p>
+        <div class="hero-points"><span><b>01</b> Hash evidence</span><span><b>02</b> Rebuild timeline</span><span><b>03</b> Correlate entities</span><span><b>04</b> Record provenance</span></div>
+      </div>
+      <div class="hero-panel">
+        <span class="panel-kicker">CURRENT CASE SIGNAL</span>
+        <div class="signal-grid"><div><strong id="hero-events">—</strong><small>EVENTS</small></div><div><strong id="hero-findings">—</strong><small>FINDINGS</small></div><div><strong id="hero-risk">—</strong><small>HIGH RISK</small></div></div>
+        <div class="integrity-status"><span class="pulse"></span><div><b>Evidence integrity active</b><small>SHA-256 manifest + audit log</small></div></div>
+      </div>
+    </section>
+
+    <section class="section-head"><div><span class="eyebrow dark">ACTIVE INVESTIGATION · 001</span><h2>Incident reconstruction desk</h2><p>Load the built-in demo or import a JSON evidence bundle.</p></div><span class="status-chip">DEFENSIBLE WORKFLOW</span></section>
+
+    <section class="workspace-grid">
+      <div class="card import-card">
+        <div class="card-kicker">01 / EVIDENCE INTAKE</div>
+        <h3>Start with the source material.</h3>
+        <p class="muted">Evidence is hashed before analysis so the original import can be verified later.</p>
+        <button id="demo-btn" class="primary">Load incident demo <span>→</span></button>
+        <label class="upload"><span>Import JSON evidence</span><input id="evidence-file" type="file" accept="application/json,.json" /></label>
+        <input id="case-name" class="case-input" value="Imported Investigation" aria-label="Case name" />
+        <small class="hint">Expected format: array of event objects with timestamp, source, event_type and optional actor/host/IP/process/file fields.</small>
+        <div class="mini-audit"><b>Method</b><span>SHA-256 · UTC timeline · rule-based detection · SQLite audit</span></div>
+      </div>
+
+      <div class="card overview-card">
+        <div class="card-kicker">02 / CASE OVERVIEW <span id="case-id">NO CASE LOADED</span></div>
+        <div class="overview-title"><div><h3 id="case-title">Load evidence to begin</h3><p id="case-range">No timeline available.</p></div><span id="risk-badge" class="risk-badge neutral">WAITING</span></div>
+        <div class="metric-grid">
+          <div><span>EVENTS</span><strong id="metric-events">—</strong><small>normalised timeline records</small></div>
+          <div><span>FINDINGS</span><strong id="metric-findings">—</strong><small>detection-rule matches</small></div>
+          <div><span>HIGH RISK</span><strong id="metric-high">—</strong><small>high / critical findings</small></div>
+          <div><span>EVIDENCE</span><strong id="metric-evidence">—</strong><small>hashed source artefacts</small></div>
+        </div>
+        <div class="hash-box"><span>PRIMARY EVIDENCE SHA-256</span><code id="hash-value">—</code></div>
+      </div>
+    </section>
+
+    <div class="divider-title"><span>THE RECONSTRUCTION</span><i></i><b>03 — 05</b></div>
+
+    <section class="analysis-grid">
+      <div class="card timeline-card">
+        <div class="card-kicker">03 / EVENT TIMELINE <span>UTC NORMALISED</span></div>
+        <h3>Chronology before conclusions.</h3>
+        <p class="muted">Cross-source events are ordered by time so investigators can see the sequence before interpreting it.</p>
+        <div id="timeline" class="timeline"><p class="empty">Load a case to build the timeline.</p></div>
+      </div>
+
+      <div class="card findings-card">
+        <div class="card-kicker">04 / DETECTION FINDINGS <span>RULE BASED</span></div>
+        <h3>What deserves attention?</h3>
+        <p class="muted">Detections are explainable rules with linked evidence entities, not unexplained scores.</p>
+        <div id="findings" class="findings"><p class="empty">No findings yet.</p></div>
+      </div>
+
+      <div class="card graph-card">
+        <div class="card-kicker">05 / ENTITY CORRELATION <span>ACTOR · IP · HOST · PROCESS · FILE</span></div>
+        <h3>Connect evidence across sources.</h3>
+        <p class="muted">A lightweight relationship view exposes how accounts, endpoints, IPs, processes and files intersect.</p>
+        <canvas id="graph" width="760" height="320"></canvas>
+      </div>
+
+      <div class="card audit-card">
+        <div class="card-kicker">CHAIN OF CUSTODY <span>SQLITE AUDIT TRAIL</span></div>
+        <h3>Preserve investigator actions.</h3>
+        <p class="muted">Imports and case actions leave a timestamped record suitable for demonstrating provenance and reproducibility.</p>
+        <div id="audit" class="audit"><p class="empty">No audit events yet.</p></div>
+      </div>
+    </section>
+
+    <section class="methodology">
+      <div><span class="eyebrow dark">CORE COMPUTER SCIENCE</span><h2>Academic concepts made practical.</h2></div>
+      <article><b>01 / FORENSICS</b><h4>Evidence integrity</h4><p>SHA-256 hashing creates a tamper-evident manifest for every imported artefact.</p></article>
+      <article><b>02 / ALGORITHMS</b><h4>Timeline & correlation</h4><p>Events are normalised, sorted and linked through shared entities to reconstruct incident sequences.</p></article>
+      <article><b>03 / DATABASES</b><h4>Auditable persistence</h4><p>SQLite stores case snapshots and chain-of-custody entries with reproducible identifiers and timestamps.</p></article>
+      <article><b>04 / SECURITY</b><h4>Explainable detections</h4><p>Authentication bursts, IP changes, privilege changes and suspicious process/file activity are detected with transparent rules.</p></article>
+    </section>
+
+    <footer><span>EVENTWEAVE / V1.0</span><span>COMPUTER SCIENCE · DIGITAL FORENSICS · SECURITY ENGINEERING</span><span>© 2026 MOHAMMED MOMINUR RAHMAN MIAH</span></footer>
+  </main>
+  <div id="toast" class="toast">Case reconstructed and written to the audit trail.</div>
+  <script src="/app.js"></script>
+</body>
+</html>

